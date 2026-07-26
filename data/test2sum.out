@@ -1,0 +1,417 @@
+nohup: ignoring input
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0003
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 2 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/apache2.mtx
+[g0003:179496] 1 more process has sent help message help-mpi-btl-openib.txt / error in device init
+[g0003:179496] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 715176 ,NNZ is 4817870
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+the gpu num is 8 the rank is 1 use the 1 gpu
+Symbolic L + U NNZ = 261262156
+the symbolic time is 0.452727 s
+/data/backup/pangulu/PanguLU-main/matrix/apache2_01000/
+read /data/backup/pangulu/PanguLU-main/matrix/apache2_01000/
+rank 0 the preprocess time is 5.103176 s
+rank 0 the numerical time is 8.678379 s 39.894672 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	0.55122	1.73135	0.94396	1.97901	5.20554	
+1	0.62300	2.55696	1.35060	2.07516	6.60572	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0003
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 2 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/ASIC_680k.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 682862 ,NNZ is 3871848
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+the gpu num is 8 the rank is 1 use the 1 gpu
+[g0003:179729] 1 more process has sent help message help-mpi-btl-openib.txt / error in device init
+[g0003:179729] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+Symbolic L + U NNZ = 118399082
+the symbolic time is 1.910802 s
+/data/backup/pangulu/PanguLU-main/matrix/ASIC_680k_00300/
+read /data/backup/pangulu/PanguLU-main/matrix/ASIC_680k_00300/
+rank 0 the preprocess time is 16.490964 s
+1	0.13866	3.21273	1.60745	30.31323	35.27207	
+rank 0 the numerical time is 40.130973 s 19.145647 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	0.13968	3.26442	1.63788	30.18707	35.22906	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0003
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 2 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/audikw_1.mtx
+[g0003:179974] 1 more process has sent help message help-mpi-btl-openib.txt / error in device init
+[g0003:179974] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 943695 ,NNZ is 77651847
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+the gpu num is 8 the rank is 1 use the 1 gpu
+Symbolic L + U NNZ = 2473732227
+the symbolic time is 3.450884 s
+/data/backup/pangulu/PanguLU-main/matrix/audikw_1_01000/
+read /data/backup/pangulu/PanguLU-main/matrix/audikw_1_01000/
+rank 0 the preprocess time is 33.512591 s
+rank 0 the numerical time is 97.536800 s 120.619844 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	2.26455	12.28761	6.42171	59.81617	80.79004	
+1	2.29019	11.87017	6.22613	62.78052	83.16701	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0003
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 2 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/cage12.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 130228 ,NNZ is 2032536
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+the gpu num is 8 the rank is 1 use the 1 gpu
+Symbolic L + U NNZ = 570274806
+the symbolic time is 0.821696 s
+/data/backup/pangulu/PanguLU-main/matrix/cage12_00200/
+read /data/backup/pangulu/PanguLU-main/matrix/cage12_00200/
+[g0003:180222] 1 more process has sent help message help-mpi-btl-openib.txt / error in device init
+[g0003:180222] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+rank 0 the preprocess time is 15.508040 s
+rank 0 the numerical time is 73.429363 s 57.600863 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	0.19108	6.09463	3.59237	50.97890	60.85699	
+1	0.19041	6.18794	3.76957	53.25214	63.40006	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0003
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 2 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/CoupCons3D.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 416800 ,NNZ is 22322336
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+the gpu num is 8 the rank is 1 use the 1 gpu
+Symbolic L + U NNZ = 499317536
+the symbolic time is 0.715353 s
+/data/backup/pangulu/PanguLU-main/matrix/CoupCons3D_00300/
+read /data/backup/pangulu/PanguLU-main/matrix/CoupCons3D_00300/
+[g0003:180488] 1 more process has sent help message help-mpi-btl-openib.txt / error in device init
+[g0003:180488] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+rank 0 the preprocess time is 9.814990 s
+rank 0 the numerical time is 18.100233 s 49.974018 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	0.54444	4.06328	2.30349	7.42945	14.34065	
+1	0.53996	4.04642	2.33163	7.41402	14.33203	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0003
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 2 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/dielFilterV3real.mtx
+[g0003:180560] 1 more process has sent help message help-mpi-btl-openib.txt / error in device init
+[g0003:180560] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 1102824 ,NNZ is 89306020
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+the gpu num is 8 the rank is 1 use the 1 gpu
+Symbolic L + U NNZ = 1077498612
+the symbolic time is 1.592064 s
+/data/backup/pangulu/PanguLU-main/matrix/dielFilterV3real_00500/
+read /data/backup/pangulu/PanguLU-main/matrix/dielFilterV3real_00500/
+rank 0 the preprocess time is 18.597267 s
+rank 0 the numerical time is 32.785421 s 61.231696 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	1.27474	7.39564	4.45872	13.45573	26.58484	
+1	1.26394	7.10624	4.12393	13.10059	25.59471	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0003
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 2 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/ecology1.mtx
+[g0003:180705] 1 more process has sent help message help-mpi-btl-openib.txt / error in device init
+[g0003:180705] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 1000000 ,NNZ is 4996000
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+the gpu num is 8 the rank is 1 use the 1 gpu
+Symbolic L + U NNZ = 71990724
+the symbolic time is 0.151738 s
+/data/backup/pangulu/PanguLU-main/matrix/ecology1_05000/
+read /data/backup/pangulu/PanguLU-main/matrix/ecology1_05000/
+rank 0 the preprocess time is 1.839281 s
+rank 0 the numerical time is 1.500557 s 19.851028 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	0.16754	0.29896	0.14844	0.15573	0.77067	
+1	0.29190	0.32510	0.26526	0.30229	1.18456	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0003
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 2 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/G3_circuit.mtx
+[g0003:180771] 1 more process has sent help message help-mpi-btl-openib.txt / error in device init
+[g0003:180771] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 1585478 ,NNZ is 7660826
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+the gpu num is 8 the rank is 1 use the 1 gpu
+Symbolic L + U NNZ = 180786316
+the symbolic time is 0.353235 s
+/data/backup/pangulu/PanguLU-main/matrix/G3_circuit_05000/
+read /data/backup/pangulu/PanguLU-main/matrix/G3_circuit_05000/
+rank 0 the preprocess time is 3.916393 s
+rank 0 the numerical time is 3.900854 s 23.379263 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+1	0.41920	0.80457	0.50630	0.45044	2.18051	
+0	0.56512	0.93212	0.68119	0.63492	2.81335	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0003
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 2 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/Ga41As41H72.mtx
+[g0003:180836] 1 more process has sent help message help-mpi-btl-openib.txt / error in device init
+[g0003:180836] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 268096 ,NNZ is 18488476
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+the gpu num is 8 the rank is 1 use the 1 gpu
+Symbolic L + U NNZ = 4573965182
+the symbolic time is 6.362526 s
+/data/backup/pangulu/PanguLU-main/matrix/Ga41As41H72_01000/
+read /data/backup/pangulu/PanguLU-main/matrix/Ga41As41H72_01000/
+rank 0 the preprocess time is 54.542425 s
+1	1.41895	21.39842	10.43758	496.37255	529.62751	
+rank 0 the numerical time is 568.709323 s 143.081037 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	1.43939	23.72991	11.39187	485.93653	522.49771	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0003
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 2 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/Hook_1498.mtx
+[g0003:181874] 1 more process has sent help message help-mpi-btl-openib.txt / error in device init
+[g0003:181874] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 1498023 ,NNZ is 60917445
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+the gpu num is 8 the rank is 1 use the 1 gpu
+Symbolic L + U NNZ = 2943713223
+the symbolic time is 4.615365 s
+/data/backup/pangulu/PanguLU-main/matrix/Hook_1498_01000/
+read /data/backup/pangulu/PanguLU-main/matrix/Hook_1498_01000/
+rank 0 the preprocess time is 40.050232 s
+rank 0 the numerical time is 132.899350 s 122.852855 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	2.68850	15.28775	8.12779	85.15664	111.26068	
+1	2.70810	14.29796	7.75509	90.58333	115.34448	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0003
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 2 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/inline_1.mtx
+[g0003:182276] 1 more process has sent help message help-mpi-btl-openib.txt / error in device init
+[g0003:182276] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 503712 ,NNZ is 36816342
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+the gpu num is 8 the rank is 1 use the 1 gpu
+Symbolic L + U NNZ = 327884168
+the symbolic time is 0.556841 s
+/data/backup/pangulu/PanguLU-main/matrix/inline_1_02000/
+read /data/backup/pangulu/PanguLU-main/matrix/inline_1_02000/
+rank 0 the preprocess time is 5.959951 s
+rank 0 the numerical time is 5.239243 s 48.111631 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	0.70502	1.13557	0.51944	0.62308	2.98311	
+1	0.80941	1.20197	0.76263	0.97015	3.74416	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0003
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 2 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/ldoor.mtx
+[g0003:182346] 1 more process has sent help message help-mpi-btl-openib.txt / error in device init
+[g0003:182346] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 952203 ,NNZ is 46522475
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+the gpu num is 8 the rank is 1 use the 1 gpu
+Symbolic L + U NNZ = 279942145
+the symbolic time is 0.451091 s
+/data/backup/pangulu/PanguLU-main/matrix/ldoor_05000/
+read /data/backup/pangulu/PanguLU-main/matrix/ldoor_05000/
+rank 0 the preprocess time is 5.254970 s
+rank 0 the numerical time is 3.969407 s 36.452055 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	0.65489	0.86844	0.51993	0.47796	2.52121	
+1	0.58102	0.86660	0.42903	0.35520	2.23184	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0003
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 2 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/nlpkkt80.mtx
+[g0003:182399] 1 more process has sent help message help-mpi-btl-openib.txt / error in device init
+[g0003:182399] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 1062400 ,NNZ is 28704672
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+the gpu num is 8 the rank is 1 use the 1 gpu
+Symbolic L + U NNZ = 3391925720
+the symbolic time is 4.741163 s
+/data/backup/pangulu/PanguLU-main/matrix/nlpkkt80_01000/
+read /data/backup/pangulu/PanguLU-main/matrix/nlpkkt80_01000/
+rank 0 the preprocess time is 44.345524 s
+rank 0 the numerical time is 263.702377 s 124.949375 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	2.14662	20.16422	10.66740	204.80063	237.77886	
+1	2.04882	18.54146	10.03592	207.34431	237.97052	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0003
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 2 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/Serena.mtx
+[g0003:182990] 1 more process has sent help message help-mpi-btl-openib.txt / error in device init
+[g0003:182990] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 1391349 ,NNZ is 64531701
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+the gpu num is 8 the rank is 1 use the 1 gpu
+Symbolic L + U NNZ = 5431444587
+the symbolic time is 8.151115 s
+/data/backup/pangulu/PanguLU-main/matrix/Serena_01000/
+read /data/backup/pangulu/PanguLU-main/matrix/Serena_01000/
+rank 0 the preprocess time is 77.980693 s
+rank 0 the numerical time is 438.481406 s 136.496505 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	3.38152	31.12996	15.80307	346.78977	397.10431	
+1	3.19694	28.92854	15.33985	342.50573	389.97107	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0003
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 2 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/Si87H76.mtx
+[g0003:183927] 1 more process has sent help message help-mpi-btl-openib.txt / error in device init
+[g0003:183927] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 240369 ,NNZ is 10661631
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+the gpu num is 8 the rank is 1 use the 1 gpu
+Symbolic L + U NNZ = 3907874919
+the symbolic time is 5.472686 s
+/data/backup/pangulu/PanguLU-main/matrix/Si87H76_01000/
+read /data/backup/pangulu/PanguLU-main/matrix/Si87H76_01000/
+rank 0 the preprocess time is 46.171546 s
+rank 0 the numerical time is 459.390611 s 144.168464 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	1.29553	20.47481	9.81783	398.32347	429.91164	
+1	1.28044	19.06637	8.77115	394.66267	423.78063	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0003
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 2 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/SiO2.mtx
+[g0003:184799] 1 more process has sent help message help-mpi-btl-openib.txt / error in device init
+[g0003:184799] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 155331 ,NNZ is 11283503
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+the gpu num is 8 the rank is 1 use the 1 gpu
+Symbolic L + U NNZ = 2047361409
+the symbolic time is 2.871079 s
+/data/backup/pangulu/PanguLU-main/matrix/SiO2_01000/
+read /data/backup/pangulu/PanguLU-main/matrix/SiO2_01000/
+rank 0 the preprocess time is 24.241808 s
+rank 0 the numerical time is 189.348248 s 141.140132 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+1	0.80689	9.57950	4.37434	152.38192	167.14265	
+0	0.85042	10.34288	4.97253	161.19220	177.35802	
+pangulu_test---------------------------finish

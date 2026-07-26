@@ -1,0 +1,365 @@
+nohup: ignoring input
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0001
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 1 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/apache2.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 715176 ,NNZ is 4817870
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+Symbolic L + U NNZ = 261262156
+the symbolic time is 0.410136 s
+/data/backup/pangulu/PanguLU-main/matrix/apache2_01000/
+read /data/backup/pangulu/PanguLU-main/matrix/apache2_01000/
+rank 0 CPU_MEMORY 4226996840
+rank 0 the preprocess time is 8.702804 s
+rank 0 the numerical time is 11.391292 s 30.393487 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	1.04540	3.05853	1.89884	3.98256	9.98533	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0001
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 1 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/ASIC_680k.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 682862 ,NNZ is 3871848
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+Symbolic L + U NNZ = 118399082
+the symbolic time is 1.688313 s
+/data/backup/pangulu/PanguLU-main/matrix/ASIC_680k_00300/
+read /data/backup/pangulu/PanguLU-main/matrix/ASIC_680k_00300/
+rank 0 CPU_MEMORY 2968706056
+rank 0 the preprocess time is 33.266445 s
+rank 0 the numerical time is 76.393569 s 10.057567 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	0.27507	6.53630	3.25570	61.16449	71.23157	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0001
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 1 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/audikw_1.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 943695 ,NNZ is 77651847
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+Symbolic L + U NNZ = 2473732227
+the symbolic time is 3.518218 s
+/data/backup/pangulu/PanguLU-main/matrix/audikw_1_01000/
+read /data/backup/pangulu/PanguLU-main/matrix/audikw_1_01000/
+rank 0 CPU_MEMORY 35746988860
+rank 0 the preprocess time is 65.132968 s
+rank 0 the numerical time is 202.298219 s 58.156091 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	5.59276	34.50606	16.49661	122.64277	179.23820	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0001
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 1 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/cage12.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 130228 ,NNZ is 2032536
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+Symbolic L + U NNZ = 570274806
+the symbolic time is 0.832681 s
+/data/backup/pangulu/PanguLU-main/matrix/cage12_00200/
+read /data/backup/pangulu/PanguLU-main/matrix/cage12_00200/
+rank 0 CPU_MEMORY 8521013136
+rank 0 the preprocess time is 43.316097 s
+rank 0 the numerical time is 140.841855 s 30.030808 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	0.37383	12.21558	7.26519	103.72817	123.58277	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0001
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 1 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/CoupCons3D.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 416800 ,NNZ is 22322336
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+Symbolic L + U NNZ = 499317536
+the symbolic time is 0.733292 s
+/data/backup/pangulu/PanguLU-main/matrix/CoupCons3D_00300/
+read /data/backup/pangulu/PanguLU-main/matrix/CoupCons3D_00300/
+rank 0 CPU_MEMORY 6882601088
+rank 0 the preprocess time is 18.512821 s
+rank 0 the numerical time is 33.375426 s 27.102017 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	1.06908	8.12298	4.66939	14.90494	28.76640	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0001
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 1 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/dielFilterV3real.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 1102824 ,NNZ is 89306020
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+Symbolic L + U NNZ = 1077498612
+the symbolic time is 1.787898 s
+/data/backup/pangulu/PanguLU-main/matrix/dielFilterV3real_00500/
+read /data/backup/pangulu/PanguLU-main/matrix/dielFilterV3real_00500/
+rank 0 CPU_MEMORY 14652877928
+rank 0 the preprocess time is 52.995528 s
+rank 0 the numerical time is 59.216395 s 33.901201 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	2.54130	14.53561	8.43306	26.40067	51.91065	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0001
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 1 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/ecology1.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 1000000 ,NNZ is 4996000
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+Symbolic L + U NNZ = 71990724
+the symbolic time is 0.151472 s
+/data/backup/pangulu/PanguLU-main/matrix/ecology1_05000/
+read /data/backup/pangulu/PanguLU-main/matrix/ecology1_05000/
+rank 0 CPU_MEMORY 1129937024
+rank 0 the preprocess time is 3.555298 s
+rank 0 the numerical time is 2.240918 s 13.292587 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	0.45008	0.60952	0.41898	0.44306	1.92164	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0001
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 1 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/G3_circuit.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 1585478 ,NNZ is 7660826
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+Symbolic L + U NNZ = 180786316
+the symbolic time is 0.386411 s
+/data/backup/pangulu/PanguLU-main/matrix/G3_circuit_05000/
+read /data/backup/pangulu/PanguLU-main/matrix/G3_circuit_05000/
+rank 0 CPU_MEMORY 2722905808
+rank 0 the preprocess time is 8.099759 s
+rank 0 the numerical time is 5.806675 s 15.705906 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	0.97405	1.73215	1.23371	1.06833	5.00823	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0001
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 1
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/Ga41As41H72.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 268096 ,NNZ is 18488476
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+Symbolic L + U NNZ = 4573965182
+the symbolic time is 7.162522 s
+/data/backup/pangulu/PanguLU-main/matrix/Ga41As41H72_01000/
+read /data/backup/pangulu/PanguLU-main/matrix/Ga41As41H72_01000/
+rank 0 the preprocess time is 58.512335 s
+rank 0 the numerical time is 1068.709323 s 70.3081037 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	2.81131	47.12901	23.01181	973.12981	1046.08284	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0001
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 1 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/Hook_1498.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 1498023 ,NNZ is 60917445
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+Symbolic L + U NNZ = 2943713223
+the symbolic time is 4.103488 s
+/data/backup/pangulu/PanguLU-main/matrix/Hook_1498_01000/
+read /data/backup/pangulu/PanguLU-main/matrix/Hook_1498_01000/
+rank 0 CPU_MEMORY 41897191508
+rank 0 the preprocess time is 104.894596 s
+rank 0 the numerical time is 254.071892 s 64.261593 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	5.40049	33.10472	16.70389	175.70227	230.91138	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0001
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 1 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/inline_1.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 503712 ,NNZ is 36816342
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+Symbolic L + U NNZ = 327884168
+the symbolic time is 0.516662 s
+/data/backup/pangulu/PanguLU-main/matrix/inline_1_02000/
+read /data/backup/pangulu/PanguLU-main/matrix/inline_1_02000/
+rank 0 CPU_MEMORY 4880681392
+rank 0 the preprocess time is 12.539802 s
+rank 0 the numerical time is 7.944499 s 31.728687 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	1.48934	2.30305	1.29824	1.56941	6.66004	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0001
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 1 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/ldoor.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 952203 ,NNZ is 46522475
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+Symbolic L + U NNZ = 279942145
+the symbolic time is 0.453294 s
+/data/backup/pangulu/PanguLU-main/matrix/ldoor_05000/
+read /data/backup/pangulu/PanguLU-main/matrix/ldoor_05000/
+rank 0 CPU_MEMORY 4075597284
+rank 0 the preprocess time is 11.052895 s
+rank 0 the numerical time is 5.710085 s 25.339910 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	1.21413	1.64782	0.93921	0.81580	4.61696	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0001
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 1
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/nlpkkt80.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 1062400 ,NNZ is 28704672
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+Symbolic L + U NNZ = 3391925720
+the symbolic time is 4.741165 s
+/data/backup/pangulu/PanguLU-main/matrix/nlpkkt80_01000/
+read /data/backup/pangulu/PanguLU-main/matrix/nlpkkt80_01000/
+rank 0 the preprocess time is 46.125524 s
+rank 0 the numerical time is 523.702377 s 60.949375 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	4.29213	40.32121	21.23714	402.12988	567.97823	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0001
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 1
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/Serena.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 1391349 ,NNZ is 64531701
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+Symbolic L + U NNZ = 5431444587
+the symbolic time is 8.150223 s
+/data/backup/pangulu/PanguLU-main/matrix/Serena_01000/
+read /data/backup/pangulu/PanguLU-main/matrix/Serena_01000/
+rank 0 the preprocess time is 79.010611 s
+rank 0 the numerical time is 878.481406 s 68.496505 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	6.72110	63.24991	31.31301	692.12911	793.41316	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0001
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 1
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/Si87H76.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 240369 ,NNZ is 10661631
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+Symbolic L + U NNZ = 3907874919
+the symbolic time is 5.472686 s
+/data/backup/pangulu/PanguLU-main/matrix/Si87H76_01000/
+read /data/backup/pangulu/PanguLU-main/matrix/Si87H76_01000/
+rank 0 the preprocess time is 46.171546 s
+rank 0 the numerical time is 909.390611 s 72.168464 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	2.58151	40.91482	18.91233	803.12333	865.53199	
+pangulu_test---------------------------finish
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   g0001
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+MPI Processes 1 
+Matrix is /data/backup/pangulu/PanguLU-main/matrix/SiO2.mtx
+ADAPTIVE_KERNEL_SELECTION -------------ON
+SYNCHRONIZE_FREE ----------------------ON
+N is 155331 ,NNZ is 11283503
+the gpu num is 8 the rank is 0 use the 0 gpu
+Device NVIDIA A800-SXM4-80GB
+Symbolic L + U NNZ = 2047361409
+the symbolic time is 2.918613 s
+/data/backup/pangulu/PanguLU-main/matrix/SiO2_01000/
+read /data/backup/pangulu/PanguLU-main/matrix/SiO2_01000/
+rank 0 CPU_MEMORY 35080985988
+rank 0 the preprocess time is 61.838692 s
+rank 0 the numerical time is 369.992588 s 72.230195 GFLOPs
+rank	getrf	tstrf	gessm	ssssm	cal_sum
+0	1.64503	22.39727	9.55807	313.94881	347.54919	
+pangulu_test---------------------------finish

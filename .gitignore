@@ -1,0 +1,7 @@
+*.o
+*.a
+*.pyc
+__pycache__/
+test/PanguLU
+kernel_test/test/csv_out/
+calib_catalog/*.catalog.csv
