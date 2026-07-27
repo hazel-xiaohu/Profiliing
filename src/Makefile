@@ -2,7 +2,7 @@ include ../make.inc
 
 
 
-all:pangulu.o
+all:pangulu.o pangulu_cuda.o
 
 pangulu.o:pangulu.cpp
 	$(MPICPP) $(MPICPPFLAGS) $(METIS_INC) -c $< -o $@ -fPIC

@@ -38,6 +38,8 @@ void pangulu_getrf_fp64_cuda(pangulu_Smatrix *A,
     }
     else
     {
+        pangulu_calib_cuda_event calib_event;
+        pangulu_calib_kernel_event_begin(&calib_event);
         pangulu_getrf_cuda_kernel(A->row,
                                   A->rowpointer[A->row],
                                   U->CUDA_nnzU,
@@ -50,6 +52,7 @@ void pangulu_getrf_fp64_cuda(pangulu_Smatrix *A,
                                   U->CUDA_rowpointer,
                                   U->CUDA_columnindex,
                                   U->CUDA_value);
+        pangulu_calib_kernel_event_end(&calib_event, 1);
     }
 }
 
@@ -70,7 +73,8 @@ void pangulu_getrf_interface_G_V1(pangulu_Smatrix *A,
         cudaMemcpy(L->CUDA_value, tmp, A->rowpointer[A->row] * sizeof(calculate_type), cudaMemcpyHostToDevice);
         cudaMemcpy(U->CUDA_value, A->CUDA_value, A->rowpointer[A->row] * sizeof(calculate_type), cudaMemcpyDeviceToDevice);
     }
-    else if (A->rowpointer[A->row] > 15000)//A->nnz > 1e4
+//    else if (A->rowpointer[A->row] > 15000)//A->nnz > 1e4
+    else if (A->rowpointer[A->row] < 0 )//A->nnz > 1e4
     {
         pangulu_getrf_cuda_dense_kernel(A->row,
                                         A->rowpointer[A->row],
@@ -87,6 +91,8 @@ void pangulu_getrf_interface_G_V1(pangulu_Smatrix *A,
     }
     else
     {
+        pangulu_calib_cuda_event calib_event;
+        pangulu_calib_kernel_event_begin(&calib_event);
         pangulu_getrf_cuda_kernel(A->row,
                                   A->rowpointer[A->row],
                                   U->CUDA_nnzU,
@@ -99,9 +105,12 @@ void pangulu_getrf_interface_G_V1(pangulu_Smatrix *A,
                                   U->CUDA_rowpointer,
                                   U->CUDA_columnindex,
                                   U->CUDA_value);
+        pangulu_calib_kernel_event_end(&calib_event, 1);
     }
 
 #else
+    pangulu_calib_cuda_event calib_event;
+    pangulu_calib_kernel_event_begin(&calib_event);
     pangulu_getrf_cuda_kernel(A->row,
                                   A->rowpointer[A->row],
                                   U->CUDA_nnzU,
@@ -114,6 +123,7 @@ void pangulu_getrf_interface_G_V1(pangulu_Smatrix *A,
                                   U->CUDA_rowpointer,
                                   U->CUDA_columnindex,
                                   U->CUDA_value);
+    pangulu_calib_kernel_event_end(&calib_event, 1);
 #endif
 
     pangulu_Smatrix_CUDA_memcpy_value_CSC(L, L);

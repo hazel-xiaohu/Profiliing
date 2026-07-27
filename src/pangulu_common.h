@@ -7,6 +7,7 @@
 #define SYNCHRONIZE_FREE
 
 #define CHECK_TIME
+#define CHECK_ANS
 //#define READ_BINARY
 #define METIS_ANALYSIS
 
@@ -24,7 +25,7 @@
 
 #define OVERLAP
 
-//#define GPU_OPEN
+#define GPU_OPEN
 
 #ifdef GPU_OPEN
 

@@ -113,6 +113,8 @@ void pangulu_tstrf_fp64_cuda_v7(pangulu_Smatrix *A,
 {
     int_t n = A->row;
     int_t nnzU = U->nnz;
+    pangulu_calib_cuda_event calib_event;
+    pangulu_calib_kernel_event_begin(&calib_event);
     pangulu_tstrf_cuda_kernel_v7(n,
                                  nnzU,
                                  U->CUDA_rowpointer,
@@ -124,6 +126,7 @@ void pangulu_tstrf_fp64_cuda_v7(pangulu_Smatrix *A,
                                  A->CUDA_rowpointer,
                                  A->CUDA_columnindex,
                                  A->CUDA_value);
+    pangulu_calib_kernel_event_end(&calib_event, 1);
 }
 
 void pangulu_tstrf_fp64_cuda_v10(pangulu_Smatrix *A,

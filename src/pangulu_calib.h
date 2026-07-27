@@ -37,6 +37,91 @@ typedef struct pangulu_calib_profile
     int input_residency_flags;
 } pangulu_calib_profile;
 
+#ifdef GPU_OPEN
+typedef struct pangulu_calib_cuda_event
+{
+    cudaEvent_t start;
+    cudaEvent_t stop;
+    int enabled;
+} pangulu_calib_cuda_event;
+
+static thread_local pangulu_calib_profile *pangulu_calib_active_profile = NULL;
+
+static void pangulu_calib_profile_activate(pangulu_calib_profile *profile)
+{
+    const char *mode = getenv("CALIB_MODE");
+    if (mode != NULL && strcmp(mode, "catalog") == 0)
+    {
+        pangulu_calib_active_profile = profile;
+        profile->time_kernel_ms = 0.0;
+        profile->num_kernel_launches = 0;
+    }
+    else
+    {
+        pangulu_calib_active_profile = NULL;
+    }
+}
+
+static void pangulu_calib_profile_deactivate(void)
+{
+    pangulu_calib_active_profile = NULL;
+}
+
+static void pangulu_calib_kernel_event_begin(pangulu_calib_cuda_event *event)
+{
+    event->enabled = 0;
+    if (pangulu_calib_active_profile == NULL)
+    {
+        return;
+    }
+    if (cudaEventCreate(&event->start) != cudaSuccess)
+    {
+        return;
+    }
+    if (cudaEventCreate(&event->stop) != cudaSuccess)
+    {
+        cudaEventDestroy(event->start);
+        return;
+    }
+    if (cudaEventRecord(event->start, 0) != cudaSuccess)
+    {
+        cudaEventDestroy(event->start);
+        cudaEventDestroy(event->stop);
+        return;
+    }
+    event->enabled = 1;
+}
+
+static void pangulu_calib_kernel_event_end(pangulu_calib_cuda_event *event, int kernel_launches)
+{
+    if (!event->enabled)
+    {
+        return;
+    }
+    float elapsed_ms = 0.0f;
+    cudaError_t status = cudaEventRecord(event->stop, 0);
+    if (status == cudaSuccess)
+    {
+        status = cudaEventSynchronize(event->stop);
+    }
+    if (status == cudaSuccess)
+    {
+        status = cudaEventElapsedTime(&elapsed_ms, event->start, event->stop);
+    }
+    if (status == cudaSuccess && pangulu_calib_active_profile != NULL)
+    {
+        pangulu_calib_active_profile->time_kernel_ms += (double)elapsed_ms;
+        pangulu_calib_active_profile->num_kernel_launches += kernel_launches;
+    }
+    cudaEventDestroy(event->start);
+    cudaEventDestroy(event->stop);
+    event->enabled = 0;
+}
+#else
+static void pangulu_calib_profile_activate(pangulu_calib_profile *profile) { (void)profile; }
+static void pangulu_calib_profile_deactivate(void) {}
+#endif
+
 static FILE *pangulu_calib_catalog_fp = NULL;
 static int pangulu_calib_catalog_enabled = -1;
 static char pangulu_calib_matrix_id[256] = "unknown";

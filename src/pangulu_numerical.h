@@ -36,13 +36,19 @@ void pangulu_solve_A_to_LU(int_t level, int_t row, int_t col,
     
     pangulu_calib_profile calib_profile = pangulu_calib_profile_unknown(PANGULU_CALIB_GETRF);
     struct timeval calib_time_start;
+    int calib_getrf_kernel_launched = (A->row != A->rowpointer[A->row]);
+    pangulu_calib_profile_activate(&calib_profile);
     pangulu_time_check_begin(&calib_time_start);
     pangulu_getrf_interface(A,L,U,calculate_X,calculate_L,calculate_U);
     calib_profile.time_total_ms = pangulu_time_check_end(&calib_time_start) * 1000.0;
+    pangulu_calib_profile_deactivate();
     calib_profile.time_overhead_ms = -1.0;
-    pangulu_calib_record_task(PANGULU_CALIB_GETRF, "default", level, row, col, -1,
-                              block_common, A, L, U,
-                              &calib_profile);
+    if (calib_getrf_kernel_launched)
+    {
+        pangulu_calib_record_task(PANGULU_CALIB_GETRF, "sparse", level, row, col, -1,
+                                  block_common, A, L, U,
+                                  &calib_profile);
+    }
 
     pangulu_transport_pangulu_Smatrix_CSC_to_CSR(U);
 
@@ -212,7 +218,9 @@ void pangulu_solve_XU_A(int_t level, int_t now_level, int_t row, int_t col,
         calib_profile.time_preprocess_ms = pangulu_time_check_end(&calib_preprocess_start) * 1000.0;
     }
 
+    pangulu_calib_profile_activate(&calib_profile);
     pangulu_tstrf_interface(A,save_X,U,calculate_X,calculate_U);
+    pangulu_calib_profile_deactivate();
     calib_profile.preprocess_required = calib_preprocess_required;
     calib_profile.time_total_ms = pangulu_time_check_end(&calib_time_start) * 1000.0;
     pangulu_calib_record_task(PANGULU_CALIB_TSTRF, "default", level, row, col, level,
@@ -350,7 +358,9 @@ void pangulu_solve_LX_A(int_t level, int_t now_level, int_t row, int_t col,
     }
 
 
+    pangulu_calib_profile_activate(&calib_profile);
     pangulu_gessm_interface(A,save_X,L,calculate_X,calculate_L);
+    pangulu_calib_profile_deactivate();
     calib_profile.preprocess_required = calib_preprocess_required;
     calib_profile.time_total_ms = pangulu_time_check_end(&calib_time_start) * 1000.0;
     pangulu_calib_record_task(PANGULU_CALIB_GESSM, "default", level, row, col, level,
@@ -491,10 +501,17 @@ void pangulu_solve_A_LU(int_t level, int_t row, int_t col,
 
     pangulu_calib_profile calib_profile = pangulu_calib_profile_unknown(PANGULU_CALIB_SSSSM);
     struct timeval calib_time_start;
+    int calib_ssssm_dense = pangulu_ssssm_use_dense_kernel(A);
+    const char *calib_ssssm_variant = calib_ssssm_dense ? "dense" : "sparse";
+    calib_profile.gpu_kernel_name = calib_ssssm_dense
+                                      ? "pangulu_ssssm_dense_cuda_kernel"
+                                      : "pangulu_ssssm_cuda_kernel";
+    pangulu_calib_profile_activate(&calib_profile);
     pangulu_time_check_begin(&calib_time_start);
     pangulu_ssssm_interface(A,L,U,calculate_X,calculate_L,calculate_U);
+    pangulu_calib_profile_deactivate();
     calib_profile.time_total_ms = pangulu_time_check_end(&calib_time_start) * 1000.0;
-    pangulu_calib_record_task(PANGULU_CALIB_SSSSM, "default", level, row, col, level,
+    pangulu_calib_record_task(PANGULU_CALIB_SSSSM, calib_ssssm_variant, level, row, col, level,
                               block_common, A, L, U,
                               &calib_profile);
 

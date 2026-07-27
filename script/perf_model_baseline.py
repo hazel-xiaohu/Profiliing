@@ -54,7 +54,7 @@ def read_rows(patterns):
             with open(path, newline="") as handle:
                 reader = csv.DictReader(handle)
                 fieldnames = reader.fieldnames or []
-                if "time_total_ms" not in fieldnames and "time_ms" not in fieldnames:
+                if not any(name in fieldnames for name in ("time_kernel_ms", "time_total_ms", "time_ms")):
                     skipped.append(path)
                     continue
                 for row in reader:
@@ -128,8 +128,9 @@ def relative_errors(y_true, y_pred):
     return numer / denom
 
 
-def target_time_ms(row):
-    for name in ("time_total_ms", "time_ms"):
+def target_time_ms(row, target_field):
+    names = (target_field,) if target_field != "time_total_ms" else ("time_total_ms", "time_ms")
+    for name in names:
         raw = row.get(name, "")
         if raw in ("", None):
             continue
@@ -142,7 +143,7 @@ def target_time_ms(row):
     return 0.0
 
 
-def evaluate_kernel(kernel, rows, alpha, test_fraction, seed):
+def evaluate_kernel(kernel, rows, alpha, test_fraction, seed, target_field):
     if len(rows) < 4:
         return {
             "kernel": kernel,
@@ -152,8 +153,8 @@ def evaluate_kernel(kernel, rows, alpha, test_fraction, seed):
 
     train_rows, test_rows = split_rows(rows, test_fraction, seed)
     x_train, x_test = normalize_train_test(train_rows, test_rows)
-    y_train = np.array([math.log1p(target_time_ms(row)) for row in train_rows], dtype=float)
-    y_test = np.array([math.log1p(target_time_ms(row)) for row in test_rows], dtype=float)
+    y_train = np.array([math.log1p(target_time_ms(row, target_field)) for row in train_rows], dtype=float)
+    y_test = np.array([math.log1p(target_time_ms(row, target_field)) for row in test_rows], dtype=float)
 
     coef = fit_ridge(x_train, y_train, alpha)
     pred = x_test @ coef
@@ -179,26 +180,34 @@ def main():
     parser.add_argument("--test-fraction", type=float, default=0.2, help="Held-out test fraction")
     parser.add_argument("--seed", type=int, default=0, help="Deterministic split seed")
     parser.add_argument("--repeats", type=int, default=1, help="Number of repeated random splits")
+    parser.add_argument(
+        "--target-field",
+        choices=("time_kernel_ms", "time_total_ms"),
+        default="time_kernel_ms",
+        help="CSV timing field to model (default: CUDA Event kernel time)",
+    )
     args = parser.parse_args()
 
     rows, skipped = read_rows(args.catalog)
     for path in skipped:
-        print(f"warning: skipped catalog without time_total_ms or time_ms: {path}")
+        print(f"warning: skipped catalog without a supported timing field: {path}")
     if not rows:
         raise SystemExit(
             "No usable catalog rows found. Rebuild PanguLU and re-run with "
-            "CALIB_MODE=catalog so newly generated catalog files include time_total_ms or time_ms."
+            "CALIB_MODE=catalog so catalogs include the selected timing field."
         )
 
     by_kernel = defaultdict(list)
     for row in rows:
-        if target_time_ms(row) > 0.0:
-            by_kernel[row.get("kernel_type", "UNKNOWN")].append(row)
+        if target_time_ms(row, args.target_field) > 0.0:
+            kernel = row.get("kernel_type", "UNKNOWN")
+            variant = row.get("kernel_variant", "default")
+            by_kernel[f"{kernel}:{variant}"].append(row)
 
     print("kernel,samples,train,test,mape_percent,p50_percent,p90_percent,status")
     for kernel in sorted(by_kernel):
         results = [
-            evaluate_kernel(kernel, by_kernel[kernel], args.alpha, args.test_fraction, args.seed + i)
+            evaluate_kernel(kernel, by_kernel[kernel], args.alpha, args.test_fraction, args.seed + i, args.target_field)
             for i in range(max(args.repeats, 1))
         ]
         result = results[0]
