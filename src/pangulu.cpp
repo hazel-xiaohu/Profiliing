@@ -62,6 +62,16 @@ void pangulu(int ARGC, char **ARGV)
 
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
+#ifdef PANGULU_FEATURE_REPLAY
+    if (size != 1)
+    {
+        if (rank == 0)
+            fprintf(stderr, "PanguLU feature replay requires exactly one MPI process.\n");
+        MPI_Finalize();
+        return;
+    }
+    setenv("CALIB_MODE", "feature_replay", 1);
+#endif
     pangulu_common *common = (pangulu_common *)pangulu_malloc(sizeof(pangulu_common));
     common->rank = rank;
     common->size = size;

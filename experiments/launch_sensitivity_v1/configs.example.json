@@ -1,0 +1,32 @@
+{
+  "baseline": {
+    "binary": "/openbayes/home/Profiliing/test/PanguLU.baseline",
+    "description": "current production launch policy",
+    "expected_policy": {
+      "WARP_PER_BLOCK_GEMM": 2,
+      "WARP_NUM_WARPLU": 2,
+      "WARP_PER_BLOCK_DGESSM": 2,
+      "WARP_PER_BLOCK_DTSTRF": 2
+    }
+  },
+  "low": {
+    "binary": "/openbayes/home/Profiliing/test/PanguLU.launch_low",
+    "description": "one warp per block where the kernel permits it",
+    "expected_policy": {
+      "WARP_PER_BLOCK_GEMM": 1,
+      "WARP_NUM_WARPLU": 1,
+      "WARP_PER_BLOCK_DGESSM": 1,
+      "WARP_PER_BLOCK_DTSTRF": 1
+    }
+  },
+  "high": {
+    "binary": "/openbayes/home/Profiliing/test/PanguLU.launch_high",
+    "description": "four warps per block where the kernel permits it",
+    "expected_policy": {
+      "WARP_PER_BLOCK_GEMM": 4,
+      "WARP_NUM_WARPLU": 4,
+      "WARP_PER_BLOCK_DGESSM": 4,
+      "WARP_PER_BLOCK_DTSTRF": 4
+    }
+  }
+}

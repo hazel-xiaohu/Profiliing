@@ -23,3 +23,7 @@ clean:
 	(cd lib; make clean)
 	(cd test; make clean)
 	(cd kernel_test; make clean)
+
+.PHONY: feature-replay
+feature-replay:
+	bash script/build_feature_replay.sh

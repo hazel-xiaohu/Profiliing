@@ -4,7 +4,7 @@ all: libpangulu.a
 
 
 libpangulu.a:
-	ar -rv -o $@ ../src/pangulu.o 
+	ar -rv -o $@ ../src/pangulu.o  ../src/pangulu_cuda.o
 	- ranlib $@
 clean:
 	rm -f libpangulu.a

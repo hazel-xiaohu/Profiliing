@@ -1,0 +1,20 @@
+# Persistent CUDA 12.8 toolchain for native H100 (Hopper, sm_90)
+CUDA_PATH = /output/toolchains/cuda-12.8
+#CUDA_PATH = /openbayes/home/cuda-11.3
+LU_INC = -I../include
+CUDA_INC = -I$(CUDA_PATH)/include
+CUDA_LIB = -L$(CUDA_PATH)/lib64 -Wl,-rpath,$(CUDA_PATH)/lib64 -lcudart
+
+CC = gcc
+CPP = g++
+MPICPP = /openbayes/home/mpich-install/bin/mpic++
+
+CPPFLAGS = -fopenmp -O3
+MPICPPFLAGS = -O3 -Wall -std=c++11 -lm -lpthread -fopenmp $(LU_INC) $(CUDA_INC)
+NVCCFLAGS = -O3 -w -Xptxas -dlcm=cg -gencode=arch=compute_90,code=sm_90 -gencode=arch=compute_90,code=compute_90 $(LU_INC) $(CUDA_INC) -allow-unsupported-compiler
+#MPICPPLINK = -L/data/app/mpi/openmpi/4.1.4-gcc/lib
+#MPICPPLINK = -L/openbayes/home/mpich-install/lib/
+
+METISFLAGS = /openbayes/home/PanguLU-main-bak/metis/build/Linux-x86_64/libmetis/libmetis.a
+
+gpu=1

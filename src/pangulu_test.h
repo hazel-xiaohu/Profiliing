@@ -129,6 +129,7 @@
         calculate_time=0;
         
 
+#ifndef PANGULU_FEATURE_REPLAY
         int_t vector_length = N;
         pangulu_vector *X_vector=(pangulu_vector *)pangulu_malloc(sizeof(pangulu_vector));
         pangulu_vector *B_vector=(pangulu_vector *)pangulu_malloc(sizeof(pangulu_vector));
@@ -145,7 +146,8 @@
             pangulu_pangulu_Smatrix_multiple_pangulu_vector_CSR(oringin_Smatrix, X_vector, B_vector);
             //pangulu_read_pangulu_vector(B_vector, vector_length);
             
-        }        
+        }
+#endif
         
         block_common->every_level_length=PANGULU_MIN(block_common->every_level_length,block_common->block_length);
         
@@ -198,8 +200,12 @@
 
         if (rank==0)
         {
+#ifdef PANGULU_FEATURE_REPLAY
+            printf("rank %d feature replay scheduling time is %lf s (target kernels skipped)\n",
+                   rank, pangulu_get_spend_time(common));
+#else
             printf("rank %d the numerical time is %lf s %lf GFLOPs\n", rank,pangulu_get_spend_time(common),FLOP/pangulu_get_spend_time(common)/1000000000.0);
-            
+#endif
         }
         
         

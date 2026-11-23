@@ -1,0 +1,3 @@
+# Use 4-6 already-downloaded representative matrices.
+# One absolute .mtx path per line. Example:
+# /openbayes/home/Profiliing/matrix/MM/Group/Matrix/Matrix.mtx

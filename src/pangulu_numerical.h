@@ -35,18 +35,26 @@ void pangulu_solve_A_to_LU(int_t level, int_t row, int_t col,
     pangulu_heap *heap = block_Smatrix->heap;
     
     pangulu_calib_profile calib_profile = pangulu_calib_profile_unknown(PANGULU_CALIB_GETRF);
-    struct timeval calib_time_start;
+    pangulu_calib_task_features calib_features = {};
+    if (pangulu_calib_is_catalog_enabled())
+    {
+        calib_features = pangulu_calib_capture_task_features(
+            PANGULU_CALIB_GETRF, A, NULL, NULL, L, U);
+    }
     int calib_getrf_kernel_launched = (A->row != A->rowpointer[A->row]);
+#ifndef PANGULU_FEATURE_REPLAY
+    struct timeval calib_time_start;
     pangulu_calib_profile_activate(&calib_profile);
     pangulu_time_check_begin(&calib_time_start);
     pangulu_getrf_interface(A,L,U,calculate_X,calculate_L,calculate_U);
     calib_profile.time_total_ms = pangulu_time_check_end(&calib_time_start) * 1000.0;
     pangulu_calib_profile_deactivate();
     calib_profile.time_overhead_ms = -1.0;
+#endif
     if (calib_getrf_kernel_launched)
     {
         pangulu_calib_record_task(PANGULU_CALIB_GETRF, "sparse", level, row, col, -1,
-                                  block_common, A, L, U,
+                                  block_common, &calib_features,
                                   &calib_profile);
     }
 
@@ -165,12 +173,13 @@ void pangulu_solve_A_to_LU(int_t level, int_t row, int_t col,
     }
 
 #ifdef ADD_GPU_MEMORY
-    
     //pangulu_Smatrix_CUDA_memcpy_complete_CSR(U, U);
     block_Smatrix->flag_dignon_L[diagonal_index]=1;
     pangulu_gessm_preprocess(L);
     //pangulu_tstrf_preprocess(U);
-
+#elif defined(PANGULU_FEATURE_REPLAY)
+    /* Preserve the host-side state transition of the GPU-resident path. */
+    block_Smatrix->flag_dignon_L[diagonal_index]=1;
 #endif
 }
 void pangulu_solve_XU_A(int_t level, int_t now_level, int_t row, int_t col,
@@ -204,9 +213,16 @@ void pangulu_solve_XU_A(int_t level, int_t now_level, int_t row, int_t col,
     save_X->value_CSC = A->value_CSC;
     
     pangulu_calib_profile calib_profile = pangulu_calib_profile_unknown(PANGULU_CALIB_TSTRF);
+    pangulu_calib_task_features calib_features = {};
+    if (pangulu_calib_is_catalog_enabled())
+    {
+        calib_features = pangulu_calib_capture_task_features(
+            PANGULU_CALIB_TSTRF, A, U, NULL, save_X, NULL);
+    }
+    int calib_preprocess_required = (block_Smatrix->flag_dignon_U[diagonal_index] == 0) ? 1 : 0;
+#ifndef PANGULU_FEATURE_REPLAY
     struct timeval calib_time_start;
     struct timeval calib_preprocess_start;
-    int calib_preprocess_required = (block_Smatrix->flag_dignon_U[diagonal_index] == 0) ? 1 : 0;
     pangulu_time_check_begin(&calib_time_start);
     if(block_Smatrix->flag_dignon_U[diagonal_index]==0){
         pangulu_time_check_begin(&calib_preprocess_start);
@@ -217,14 +233,16 @@ void pangulu_solve_XU_A(int_t level, int_t now_level, int_t row, int_t col,
         block_Smatrix->flag_dignon_U[diagonal_index]=1;
         calib_profile.time_preprocess_ms = pangulu_time_check_end(&calib_preprocess_start) * 1000.0;
     }
-
     pangulu_calib_profile_activate(&calib_profile);
     pangulu_tstrf_interface(A,save_X,U,calculate_X,calculate_U);
     pangulu_calib_profile_deactivate();
-    calib_profile.preprocess_required = calib_preprocess_required;
     calib_profile.time_total_ms = pangulu_time_check_end(&calib_time_start) * 1000.0;
+#else
+    block_Smatrix->flag_dignon_U[diagonal_index]=1;
+#endif
+    calib_profile.preprocess_required = calib_preprocess_required;
     pangulu_calib_record_task(PANGULU_CALIB_TSTRF, "default", level, row, col, level,
-                              block_common, A, U, NULL,
+                              block_common, &calib_features,
                               &calib_profile);
 
 #ifdef OVERLAP
@@ -297,13 +315,15 @@ void pangulu_solve_XU_A(int_t level, int_t now_level, int_t row, int_t col,
         }
     }
 #ifdef ADD_GPU_MEMORY
-
     //if(GPU_MEMORY_FLAG==0){
         pangulu_pangulu_Smatrix_memcpy_columnpointer_CSC(save_X, A);
         pangulu_Smatrix_CUDA_memcpy_complete_CSC(save_X, A);
         block_Smatrix->flag_save_L[mapper_index_X]=1;
     //}
-    
+#elif defined(PANGULU_FEATURE_REPLAY)
+    /* Structural output X is known before numerical execution. */
+    pangulu_pangulu_Smatrix_memcpy_columnpointer_CSC(save_X, A);
+    block_Smatrix->flag_save_L[mapper_index_X]=1;
 #endif
 }
 
@@ -343,9 +363,16 @@ void pangulu_solve_LX_A(int_t level, int_t now_level, int_t row, int_t col,
 
     
     pangulu_calib_profile calib_profile = pangulu_calib_profile_unknown(PANGULU_CALIB_GESSM);
+    pangulu_calib_task_features calib_features = {};
+    if (pangulu_calib_is_catalog_enabled())
+    {
+        calib_features = pangulu_calib_capture_task_features(
+            PANGULU_CALIB_GESSM, A, L, NULL, save_X, NULL);
+    }
+    int calib_preprocess_required = (block_Smatrix->flag_dignon_L[diagonal_index] == 0) ? 1 : 0;
+#ifndef PANGULU_FEATURE_REPLAY
     struct timeval calib_time_start;
     struct timeval calib_preprocess_start;
-    int calib_preprocess_required = (block_Smatrix->flag_dignon_L[diagonal_index] == 0) ? 1 : 0;
     pangulu_time_check_begin(&calib_time_start);
     if(block_Smatrix->flag_dignon_L[diagonal_index]==0){
         pangulu_time_check_begin(&calib_preprocess_start);
@@ -356,15 +383,16 @@ void pangulu_solve_LX_A(int_t level, int_t now_level, int_t row, int_t col,
         block_Smatrix->flag_dignon_L[diagonal_index]=1;
         calib_profile.time_preprocess_ms = pangulu_time_check_end(&calib_preprocess_start) * 1000.0;
     }
-
-
     pangulu_calib_profile_activate(&calib_profile);
     pangulu_gessm_interface(A,save_X,L,calculate_X,calculate_L);
     pangulu_calib_profile_deactivate();
-    calib_profile.preprocess_required = calib_preprocess_required;
     calib_profile.time_total_ms = pangulu_time_check_end(&calib_time_start) * 1000.0;
+#else
+    block_Smatrix->flag_dignon_L[diagonal_index]=1;
+#endif
+    calib_profile.preprocess_required = calib_preprocess_required;
     pangulu_calib_record_task(PANGULU_CALIB_GESSM, "default", level, row, col, level,
-                              block_common, A, L, NULL,
+                              block_common, &calib_features,
                               &calib_profile);
 
 #ifdef OVERLAP
@@ -431,13 +459,15 @@ void pangulu_solve_LX_A(int_t level, int_t now_level, int_t row, int_t col,
     }
     
 #ifdef ADD_GPU_MEMORY
-
     //if(GPU_MEMORY_FLAG==0){
         pangulu_pangulu_Smatrix_memcpy_columnpointer_CSC(save_X, A);
         pangulu_Smatrix_CUDA_memcpy_complete_CSC(save_X, A);
         block_Smatrix->flag_save_U[mapper_index_X]=1;
     //}
-    
+#elif defined(PANGULU_FEATURE_REPLAY)
+    /* Structural output X is known before numerical execution. */
+    pangulu_pangulu_Smatrix_memcpy_columnpointer_CSC(save_X, A);
+    block_Smatrix->flag_save_U[mapper_index_X]=1;
 #endif
 
     return;
@@ -500,19 +530,27 @@ void pangulu_solve_A_LU(int_t level, int_t row, int_t col,
     
 
     pangulu_calib_profile calib_profile = pangulu_calib_profile_unknown(PANGULU_CALIB_SSSSM);
+    pangulu_calib_task_features calib_features = {};
+    if (pangulu_calib_is_catalog_enabled())
+    {
+        calib_features = pangulu_calib_capture_task_features(
+            PANGULU_CALIB_SSSSM, A, L, U, A, NULL);
+    }
     struct timeval calib_time_start;
-    int calib_ssssm_dense = pangulu_ssssm_use_dense_kernel(A);
+    int calib_ssssm_dense = pangulu_calib_ssssm_use_dense_kernel(A);
     const char *calib_ssssm_variant = calib_ssssm_dense ? "dense" : "sparse";
     calib_profile.gpu_kernel_name = calib_ssssm_dense
                                       ? "pangulu_ssssm_dense_cuda_kernel"
                                       : "pangulu_ssssm_cuda_kernel";
+#ifndef PANGULU_FEATURE_REPLAY
     pangulu_calib_profile_activate(&calib_profile);
     pangulu_time_check_begin(&calib_time_start);
     pangulu_ssssm_interface(A,L,U,calculate_X,calculate_L,calculate_U);
     pangulu_calib_profile_deactivate();
     calib_profile.time_total_ms = pangulu_time_check_end(&calib_time_start) * 1000.0;
+#endif
     pangulu_calib_record_task(PANGULU_CALIB_SSSSM, calib_ssssm_variant, level, row, col, level,
-                              block_common, A, L, U,
+                              block_common, &calib_features,
                               &calib_profile);
 
 

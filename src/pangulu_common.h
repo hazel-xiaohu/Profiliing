@@ -6,8 +6,10 @@
 
 #define SYNCHRONIZE_FREE
 
+#ifndef PANGULU_FEATURE_REPLAY
 #define CHECK_TIME
 #define CHECK_ANS
+#endif
 //#define READ_BINARY
 #define METIS_ANALYSIS
 
@@ -23,9 +25,10 @@
 #define CPU_OPTION
 //#define CHECK_TIME
 
+#ifndef PANGULU_FEATURE_REPLAY
 #define OVERLAP
-
 #define GPU_OPEN
+#endif
 
 #ifdef GPU_OPEN
 

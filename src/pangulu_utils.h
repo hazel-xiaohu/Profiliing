@@ -317,7 +317,7 @@
             S->nnz=nnz;
             S->value = value;
             //printf("begin write binary file\n");
-            pangulu_binary_write_csv_pangulu_Smatrix(S,binary_name);
+            //pangulu_binary_write_csv_pangulu_Smatrix(S,binary_name);
             //printf("end write binary file\n");
         }
         else{

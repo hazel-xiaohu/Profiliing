@@ -22,6 +22,11 @@ TSTRF  -> pangulu_tstrf_fp64_cuda_v7
 SSSSM  -> pangulu_ssssm_cuda_kernel
 ```
 
+
+## Online-safe schema v2
+
+As of 2026-07-28, model features are snapshotted before the target kernel. Operand semantics are GETRF `A -> L,U`, GESSM `A,L -> X`, TSTRF `A,U -> X`, and SSSSM `A,L,U -> A`. Runtime launch counts and per-launch derivatives remain optional telemetry but are excluded from every deployable model. Historical v1 artifacts are isolated under `artifacts/legacy_postkernel_v1/`; new data belongs under `artifacts/online_safe_v2/`.
+
 ## Changes Made
 
 ### Task Catalog
@@ -51,7 +56,9 @@ The structural features include:
 block_size
 nnz_input_0
 nnz_input_1
-nnz_output
+nnz_input_2
+nnz_output_0
+nnz_output_1
 flops
 estimated_bytes
 operational_intensity
